@@ -4,6 +4,10 @@ RUN yum -y update \
  && yum -y install docker  rh-python36 \
  && yum clean all && rm -rf /var/cache/yum
 
+RUN /opt/rh/rh-python36/root/usr/bin/python3.6 -mvenv /opt/delivenv 
+COPY resources/requirements.txt /opt/delivenv
+RUN /bin/bash -c ". /opt/delivenv/bin/activate ; pip install -r /opt/delivenv/requirements.txt"
+
 #Para ejecutar para desarrollo necesita crear un contenedor que use este como FROM y que haga...
 #RUN yum -y install byobu curl wget sudo bash-completion less git bash bind-utils
 #RUN echo "#!/bin/bash" > /opt/startup.sh
