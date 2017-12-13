@@ -1,7 +1,7 @@
 FROM dockerhub.hi.inet/dcip/minimal:7
 
 RUN yum -y update \
- && yum -y install docker  rh-python36 \
+ && yum -y install jq  rh-python36 \
  && yum clean all && rm -rf /var/cache/yum
 
 RUN /opt/rh/rh-python36/root/usr/bin/python3.6 -mvenv /opt/delivenv 
